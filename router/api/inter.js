@@ -1,6 +1,5 @@
 const Router = require('koa-router');
 const interService = require('../../services/interService');
-const rp = require('request-promise');
 const IP2Region = require('ip2region').default;
 // **配置路由前缀**
 const router = new Router({
