@@ -7,7 +7,7 @@ const app = new Koa()
 
 // app.use(ipMiddleware());
 app.use( async (ctx, next) => {
-  console.log('inter =====')
+  console.log(' api  inter =====')
   // 允许所有来源，可以设置为具体的域名
   ctx.set('Access-Control-Allow-Origin', '*');
   

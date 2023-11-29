@@ -25,6 +25,10 @@ const Inter = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    accessNumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     createdAt: false,
