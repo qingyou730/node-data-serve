@@ -10,6 +10,7 @@ const ip2region = new IP2Region();
 
 router.get('/', async (ctx, next) => {
   const list = await interService.getInterList();
+  
 
   // ctx.response.headers["access-control-allow-origin"] = "*";
   // ctx.response.headers["access-control-allow-methods"] = "GET";
@@ -24,8 +25,10 @@ router.get('/', async (ctx, next) => {
 router.post(
   "/",
   async (ctx, next) => {
-    const clientIp = ctx.request.ip;
+    const clientIp = ctx.request.header['x-real-ip'] || ctx.request.header['x-forwarded-for'];
     let one = await interService.getInterOne(clientIp);
+    console.log('one', one)
+    console.log('x-forwarded-for', clientIp)
     if (one) {
       one = await interService.updateInterList(one.id, {
         accessNumber: Number(one.accessNumber) + 1 + "",
